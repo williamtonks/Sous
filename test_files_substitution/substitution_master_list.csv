@@ -8,26 +8,26 @@ brandy,1/4 cup,1 teaspoon imitation brandy extract plus 1/4 cup water
 bread crumbs,1 cup,"1 cup cracker crumbs, 1 cup matzo meal, 1 cup ground oats"
 broth: beef or chicken,1 cup,"1 bouillon cube plus 1 cup boiling water, 1 tablespoon soy sauce plus enough water to make 1 cup, 1 cup vegetable broth"
 brown sugar,1 cup,"1 cup white sugar plus 1/4 cup molasses and decrease the liquid in recipe by 1/4 cup, 1 cup white sugar, 1 1/4 cups confectioners' sugar"
-butter (salted),1 cup,"1 cup margarine, 1 cup shortening plus 1/2 teaspoon salt, 7/8 cup vegetable oil plus 1/2 teaspoon salt, 7/8 cup lard plus 1/2 teaspoon salt"
-butter (unsalted),1 cup,"1 cup shortening, 7/8 cup vegetable oil, 7/8 cup lard"
+salted butter,1 cup,"1 cup margarine, 1 cup shortening plus 1/2 teaspoon salt, 7/8 cup vegetable oil plus 1/2 teaspoon salt, 7/8 cup lard plus 1/2 teaspoon salt"
+unsalted butter,1 cup,"1 cup shortening, 7/8 cup vegetable oil, 7/8 cup lard"
 buttermilk,1 cup,"1 cup yogurt, 1 tablespoon lemon juice or vinegar plus enough milk to make 1 cup"
 cheddar cheese,1 cup,"1 cup shredded Colby cheddar , 1 cup shredded Monterey Jack cheese"
 chervil,1 tablespoon,1 tablespoon chopped fresh parsley
 chicken base,1 tablespoon,1 cup canned or homemade chicken broth or stock (Reduce liquid in recipe proportionally)
-chocolate (semisweet),1 ounce,"1 ounce square of unsweetened chocolate plus 4 teaspoons sugar, 1 ounce semisweet chocolate chips plus 1 teaspoon shortening"
-chocolate (unsweetened),1 ounce,3 tablespoons unsweetened cocoa plus 1 tablespoon shortening or vegetable oil
+semisweet chocolate,1 ounce,"1 ounce square of unsweetened chocolate plus 4 teaspoons sugar, 1 ounce semisweet chocolate chips plus 1 teaspoon shortening"
+unsweetened chocolate,1 ounce,3 tablespoons unsweetened cocoa plus 1 tablespoon shortening or vegetable oil
 cocoa,1/4 cup,1 ounce square unsweetened chocolate
 condensed cream of mushroom soup,10.75 ounces,10.75 ounce can condensed cream of celery or cream of chicken or golden mushroom soup
 corn syrup,1 cup,"1 1/4 cup white sugar plus 1/3 cup water, 1 cup honey, 1 cup light treacle syrup"
 cottage cheese,1 cup,"1 cup farmer's cheese, 1 cup ricotta cheese"
 cracker crumbs,1 cup,"1 cup bread crumbs, 1 cup matzo meal, 1 cup ground oats"
-cream (half and half),1 cup,7/8 cup milk plus 1 tablespoon butter
-cream (heavy),1 cup,"1 cup evaporated milk, 3/4 cup milk plus 1/3 cup butter"
-cream (light),1 cup,"1 cup evaporated milk, 3/4 cup milk plus 3 tablespoons butter"
-cream (whipped),1 cup,1 cup frozen whipped topping (thawed)
+half and half cream,1 cup,7/8 cup milk plus 1 tablespoon butter
+heavy cream,1 cup,"1 cup evaporated milk, 3/4 cup milk plus 1/3 cup butter"
+ light cream,1 cup,"1 cup evaporated milk, 3/4 cup milk plus 3 tablespoons butter"
+whipped cream,1 cup,1 cup frozen whipped topping (thawed)
 cream of tartar,1 teaspoon,"2 teaspoons lemon juice, 2 teaspoons vinegar"
-crème fraiche,1 cup,1 cup of heavy cream and 1 tablespoon of plain yogurt
-egg,3 tablespoons,"2 1/2 tablespoons of powdered egg substitute plus 2 1/2 tablespoons water, 1/4 cup liquid egg substitute, 1/4 cup silken tofu pureed, 3 tablespoons mayonnaise, 1/2 banana mashed with 1/2 teaspoon baking powder, 1 tablespoon powdered flax seed soaked in 3 tablespoons water"
+creme fraiche,1 cup,1 cup of heavy cream and 1 tablespoon of plain yogurt
+large egg,3 tablespoons,"2 1/2 tablespoons of powdered egg substitute plus 2 1/2 tablespoons water, 1/4 cup liquid egg substitute, 1/4 cup silken tofu pureed, 3 tablespoons mayonnaise, 1/2 banana mashed with 1/2 teaspoon baking powder, 1 tablespoon powdered flax seed soaked in 3 tablespoons water"
 evaporated milk,1 cup,1 cup light cream
 farmer's cheese,8 ounces,"8 ounces dry cottage cheese, 8 ounces creamed cottage cheese (drained)"
 fats for baking,1 cup,"1 cup applesauce, 1 cup fruit puree"
@@ -54,8 +54,8 @@ macadamia nuts,1 cup,"1 cup almonds, 1 cup hazelnuts"
 mace,1 teaspoon,1 teaspoon nutmeg
 margarine,1 cup,"1 cup shortening plus 1/2 teaspoon salt, 1 cup butter, 7/8 cup vegetable oil plus 1/2 teaspoon salt, 7/8 cup lard plus 1/2 teaspoon salt"
 mayonnaise,1 cup,"1 cup sour cream, 1 cup plain yogurt"
-milk (whole),1 cup,"1 cup soy milk, 1 cup rice milk, 1 cup water or juice, 1/4 cup dry milk powder plus 1 cup water, 2/3 cup evaporated milk plus 1/3 cup water"
-mint (fresh),1/4 cup,1 tablespoon dried mint leaves
+whole milk,1 cup,"1 cup soy milk, 1 cup rice milk, 1 cup water or juice, 1/4 cup dry milk powder plus 1 cup water, 2/3 cup evaporated milk plus 1/3 cup water"
+fresh mint,1/4 cup,1 tablespoon dried mint leaves
 molasses,1 cup,3/4 cup brown sugar and 1 teaspoon cream of tartar
 mustard: prepared,1 tablespoon,1 tablespoon dried mustard and 1 teaspoon water and 1 teaspoon vinegar and 1 teaspoon sugar
 onion,1 cup,"1 cup chopped green onions, 1 cup chopped shallots, 1 cup chopped leeks, 1/4 cup dried minced onion, 1/4 cup onion powder"
@@ -65,7 +65,7 @@ parmesan cheese,1/2 cup,"1/2 cup grated Asiago cheese, 1/2 cup grated Romano che
 parsley,1 tablespoon,"1 tablespoon chopped fresh chervil, 1 teaspoon dried parsley"
 pepperoni,1 ounce,1 ounce salami
 raisin,1 cup,"1 cup dried currants, 1 cup dried cranberries, 1 cup chopped pitted prunes"
-rice: white,1 cup,"1 cup cooked barley, 1 cup cooked bulgur, 1 cup cooked brown or wild rice"
+white rice,1 cup,"1 cup cooked barley, 1 cup cooked bulgur, 1 cup cooked brown or wild rice"
 ricotta,1 cup,"1 cup dry cottage cheese, 1 cup silken tofu"
 rum,1 tablespoon,1/2 teaspoon rum extract 
 saffron,1/4 teaspoon,1/4 teaspoon turmeric
@@ -78,10 +78,10 @@ sour milk,1 cup,1 tablespoon vinegar or lemon juice plus 1 cup milk
 soy sauce,1/2 cup,1/4 cup Worcestershire sauce plus 1 tablespoon water
 stock: beef or chicken,1 cup,1 cube beef or chicken bouillon plus 1 cup water
 sweetened condensed milk,14 ounces,3/4 cup white sugar mixed with 1/2 cup water and 1 1/8 cups dry powdered milk
-vegetable oil (for baking),1 cup,"1 cup applesauce, 1 cup fruit puree"
-vegetable oil (for frying),1 cup,"1 cup lard, 1 cup vegetable shortening"
+vegetable oil ,1 cup,"1 cup applesauce, 1 cup fruit puree"
+vegetable oil ,1 cup,"1 cup lard, 1 cup vegetable shortening"
 vinegar,1 teaspoon,"1 teaspoon lemon or lime juice, 2 teaspoons white wine"
 white sugar,1 cup,"1 cup brown sugar, 1 1/4 cups confectioners' sugar, 3/4 cup honey, 3/4 cup corn syrup"
 wine,1 cup,"1 cup chicken or beef broth, 1 cup fruit juice mixed with 2 teaspoons vinegar, 1 cup water"
-yeast: active dry,.25 ounces,"1 cake compressed yeast, 2 1/2 teaspoons active dry yeast, 2 1/2 teaspoons rapid rise yeast"
+active dry yeast,.25 ounces,"1 cake compressed yeast, 2 1/2 teaspoons active dry yeast, 2 1/2 teaspoons rapid rise yeast"
 yogurt,1 cup,"1 cup sour cream, 1 cup buttermilk, 1 cup sour milk"
