@@ -148,12 +148,12 @@ def convert_grams_to_standard_weight(amount):
     if conversion[0] == 1:
         combined_measurement = combined_measurement + str(conversion[0]) + " pound, "
     elif conversion[0] > 1:
-        combined_measurement = combined_measurement + str(conversion[0]) + " pound, "
+        combined_measurement = combined_measurement + str(conversion[0]) + " pounds, "
     if conversion[1] >= 1:
         combined_measurement = combined_measurement + str(conversion[1]) + " "
     if conversion[2] >= 1:
         fractional_amount = Fraction(conversion[2], 8)
-        return combined_measurement + str(conversion[1]) + " " + str(fractional_amount.numerator) + "/" + str(fractional_amount.denominator) + " ounces "
+        return combined_measurement + " " + str(fractional_amount.numerator) + "/" + str(fractional_amount.denominator) + " ounces "
     elif conversion[1] >= 1:
         return combined_measurement + " ounces "
     return combined_measurement.strip(',')
@@ -180,6 +180,10 @@ def convert_ml_to_standard_volume(amount):
         if conversion[1] % 2 == 1:
             conversion[1] += 1
         fractional_amount = Fraction(conversion[1], 16)
+        if fractional_amount.numerator > fractional_amount.denominator:
+            conversion[0] += 1
+            conversion[1] -= 16
+            fractional_amount = Fraction(conversion[1], 16)
         return str(conversion[0]) + " " + str(fractional_amount.numerator)+ "/" + str(fractional_amount.denominator) + " cups"
     combined_measurement = ""
     if conversion[0] == 1:
@@ -190,15 +194,17 @@ def convert_ml_to_standard_volume(amount):
         combined_measurement = combined_measurement + str(conversion[1]) + " tablespoon, "
     elif conversion[1] > 1:
         combined_measurement = combined_measurement + str(conversion[1]) + " tablespoons, "
+    if conversion[3] >= 16:
+        conversion[2] += 1
+        conversion[3] -= 16
     if conversion[2] >= 1:
         combined_measurement = combined_measurement + str(conversion[2]) + " "
     if conversion[3] >= 1:
-            fractional_amount = Fraction(conversion[3], 16)
-            return combined_measurement + str(fractional_amount.numerator) + "/" + str(fractional_amount.denominator) + " teaspoons "
+        fractional_amount = Fraction(conversion[3], 16)
+        return combined_measurement + str(fractional_amount.numerator) + "/" + str(fractional_amount.denominator) + " teaspoons "
     elif conversion[2] >= 0:
         return combined_measurement + " teaspoon "
     return combined_measurement.strip(",")
-
 
 class Substitution:
 
@@ -255,7 +261,7 @@ class Ingredient:
         ingredient = ingredient.strip()
         broken_text = ingredient.split()
         i = 0
-        ingredient_tuple = ["", 0.0, ""]
+        ingredient_tuple = [0.0, "", ""]
         current_string = ""
         setting_number = True
         while i < len(broken_text):
@@ -326,11 +332,40 @@ class Recipe:
             #print(self.ingredients[i].ingredient)
         print('\n')
 
-    def update_recipe_substitution(self, sub_line, position):
-        self.ingredients[position] = Ingredient(sub_line)
+    def update_recipe_substitution(self, position_of_old, new_ingredients):
+        self.ingredients.pop(position_of_old)
+        for item in new_ingredients:
+            self.ingredients.append(Ingredient(item))
 
     def format_instructions(self, instructions):
         return instructions.split('\n')
+
+    def adjust_servings(self, new_servings):
+        old_servings = self.servings
+        ratio = float(new_servings) / float(old_servings)
+        new_ingredient_lines = []
+        for item in self.ingredients:
+            if item.ingredient[1] == "milliliters" :
+                sub_amount_in_ml = item.ingredient[0] * ratio
+                printable = convert_ml_to_standard_volume(sub_amount_in_ml)
+                #print(printable.strip() + " of " + item.ingredient[2].strip())
+                new_ingredient_lines.append(unicode(printable.strip() + " " + item.ingredient[2].strip()))
+            elif item.ingredient[1] == "grams":
+                sub_amount_in_grams = item.ingredient[0] * ratio
+                printable = convert_grams_to_standard_weight(sub_amount_in_grams)
+                #print(printable.strip() + " of " + item.ingredient[2].strip())
+                new_ingredient_lines.append(unicode(printable.strip() + " " + item.ingredient[2].strip()))
+            elif item.ingredient[0] == "To Taste":
+                new_ingredient_lines.append(unicode(item.ingredient_text))
+            else:
+                sub_amount = ratio * item.ingredient[0]
+                new_ingredient_lines.append(unicode(str(sub_amount) + " " + item.ingredient[2].strip()))
+        self.ingredients = []
+        for item in new_ingredient_lines:
+            self.ingredients.append(Ingredient(item))
+        self.servings = new_servings
+
+
 
 
 class Substitution_Set:
@@ -376,9 +411,9 @@ def substitution_quantities(recipe_amount, ingredient_amount, substitution_amoun
     #print("Substitution Amount " + str(substitution_amount))
     return recipe_amount * (float(substitution_amount) / float(ingredient_amount))
 
-def recipe_chosen(key):
-    recipe = recipe_dict[key]
-    print_a_recipe(key)
+def recipe_chosen(original_key):
+    recipe = recipe_dict[original_key]
+    print_a_recipe(original_key)
     needs_substitution = str(raw_input("Do you need to make a substitution?"))
     keep_going = False
     if 'y' in needs_substitution.lower():
@@ -397,6 +432,9 @@ def recipe_chosen(key):
                 if 'y' in answer.lower():
                     ingredient_key = key
                     break
+        if ingredient_key == "":
+            print("Sorry we didn't find a suitable substitute! Maybe try a different recipe. ")
+            break
         print("Here are some potential substitutes:")
         substitution = []
         for item in substitution_dict[ingredient_key].substitutes:
@@ -406,23 +444,34 @@ def recipe_chosen(key):
             if 'y' in answer.lower():
                 substitution = item
                 break
-        new_ingredient_line = ""
+        new_ingredient_lines = []
         print("Here are your proportional substitutes for: " + ingredient_line.ingredient_text)
         for item in substitution.components:
             sub_amount_in_ml = substitution_quantities(ingredient_line.ingredient[0], substitution_dict[ingredient_key].original_amount, item[0]) #each of these in mL
             printable = convert_ml_to_standard_volume(sub_amount_in_ml)
             print(printable.strip() + " of " + item[1].strip())
-            new_ingredient_line = new_ingredient_line + printable.strip() + " " + item[1].strip()
+            new_ingredient_lines.append(unicode(printable.strip() + " " + item[1].strip()))
         
+        recipe.update_recipe_substitution(substitute - 1, new_ingredient_lines)
+        print_a_recipe(original_key)
+
         needs_substitution = str(raw_input("Do you need to make another substitution?"))
         keep_going = False
         if 'y' in needs_substitution.lower():
             keep_going = True
 
+def change_recipe_serving_size(recipe_key, new_servings):
+    recipe = recipe_dict[recipe_key]
+    print_a_recipe(recipe_key)
+    recipe.adjust_servings(new_servings)
+    print_a_recipe(recipe_key)
+
 substitution_dict = open_and_parse_substitution_list('test_files_substitution/substitution_master_list.csv')
 print("Finished populating substitution list!")
 recipe_dict = open_and_parse_recipe_database('test_files_substitution/recipes_raw_nosource_epi.json')
 print("Finished populating recipe database!")
+change_recipe_serving_size('Chocolate Roll-Out Cookies', 6)
+
 print("Welcome to the Sous Substitution Service. Here's a recipe for Chocolate Roll-Out Cookies")
 recipe_chosen('Chocolate Roll-Out Cookies')
 #All recipes originally from Epicurious, a popular food recipe forum. 
